@@ -18,10 +18,10 @@
 <div class="container my-5">
     <div class="row">
         <% authors.forEach(author => { %>
-            <div class="col col-12 col-md-6 mt-2">
+            <div class="col-12 col-sm-6 mt-2">
                 <p><%= author.name %></p>
             </div>
-            <div class="col col-12 col-md-6 d-flex justify-content-start justify-content-md-end mt-2 px-0">
+            <div class="col-12 col-sm-6 d-flex justify-content-start justify-content-md-end mt-2 px-0">
                 <a href=""class="btn " type="GET" id="viewAuthor">View</a> 
                 <a href="" class="btn btn-warning mx-3"type="GET" id="editAuthor">Edit</a> 
                 <button class="btn btn-danger" type="submit" id="deleteAuthor">Delete</button>

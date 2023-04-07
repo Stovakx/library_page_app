@@ -1,12 +1,12 @@
 <section>
     <div class="container">
         <div class="row">
-            <div class="col">
+            <div class="col-12">
                 <h2 class="text-center">Add book</h2>
                 <form action="/books" method="POST" enctype="multipart/form-data">
-                    <%- include('_form_fields') %>
+                    <%- include('_create_book') %>
                     <div class="row">
-                        <div class="col col-12 d-flex justify-content-md-end">
+                        <div class="col-12 d-flex justify-content-md-end">
                             <a href="/books" class="btn btn-danger ms-2">Cancel</a>
                             <button type="submit" class="btn btn-success ms-2">Create</button>
                         </div>

@@ -1,0 +1,75 @@
+<div class="row mt-1">
+    <div class="col-12 col-md-6">
+        <div class="col-12">
+            <label for="" class="form-label">Title</label>
+        </div>
+        <div class="col-12">
+            <input class="form-control" type="text" name="title" value="<% book.title %>">
+        </div>
+    </div>
+    <div class="col-12 col-md-6">
+        <div class="col-12">
+            <label class="form-label">Author</label>
+        </div>
+        <div class="col-12">
+            <select name="author" class="form-select">
+                <% authors.forEach(author => { %>
+                    <% if (author.id === book.author) { %>
+                      <option selected label="<%= author.name %>" value="<%= author.id %>">
+                    <% } else { %>
+                      <option label="<%= author.name %>" value="<%= author.id %>">
+                    <% } %>
+                  <% }) %>
+            </select>           
+        </div>
+    </div>
+</div>
+<div class="row mt-1">
+    <div class="col col-12">
+        <label class="form-label">Genre</label>
+    </div>
+    <div class="col col-12">
+        <input class="form-control" type="text" name="genre" value="<%= book.genre %>">
+    </div>
+</div>
+<div class="row mt-1">
+    <div class="col-12 col-md-6">
+        <div class="col-12">
+            <label class="form-label">Publish date</label>
+        </div>
+        <div class="col-12">
+            <input class="form-control" type="date" name="publishDate" 
+            value="<%= book.publishDate?.toISOString().split('T')[0] || '' %>"
+        </div>
+    </div>
+    <div class="col-12 col-md-6">
+        <div class="col-12">
+            <label class="form-label">Page count</label>
+        </div>
+        <div class="col-12">
+            <input class="form-control" type="number" min="1" name="pageCount" value="<%= book.pageCount %>">    
+        </div>
+    </div>
+</div>
+<div class="row mt-1">
+    <div class="col-12 col-md-6">
+        <div class="col col-12">
+            <label class="form-label">Cover</label>
+        </div>
+        <div class="col-12">
+            <div class="input-group mb-3">
+                <input class="form-control" type="file" name="cover">
+            </div>       
+        </div>
+    </div>
+    <div class="col-12 col-md-6">
+        <div class="col col-12">
+            <label class="form-label">Description</label>
+        </div>
+        <div class="col-12">
+            <textarea class="form-control" name="description" value=""><%= book.description %></textarea>    
+        </div>
+    </div>
+</div>
+
+
