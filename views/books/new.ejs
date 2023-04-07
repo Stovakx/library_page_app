@@ -1,14 +1,16 @@
 <section>
-    <div class="container">
+    <div class="container mt-5">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 mt-4 ">
                 <h2 class="text-center">Add book</h2>
-                <form action="/books" method="POST" enctype="multipart/form-data">
+                <form class="border border-2" action="/books" method="POST" enctype="multipart/form-data">
                     <%- include('_create_book') %>
-                    <div class="row">
-                        <div class="col-12 d-flex justify-content-md-end">
-                            <a href="/books" class="btn btn-danger ms-2">Cancel</a>
-                            <button type="submit" class="btn btn-success ms-2">Create</button>
+                    <div class="row">                       
+                        <div class="col-11 d-flex justify-content-md-end">
+                            <a href="/books" class="btn btn-danger me-2">Cancel</a>
+                        </div>
+                        <div class="col-1 d-flex justify-content-md-end ">
+                            <button type="submit" class="btn btn-success ">Create</button>
                         </div>
                     </div>
                 </form>
