@@ -1,0 +1,73 @@
+<div class="row mt-1">
+    <div class="col col-12 col-md-6">
+        <div class="col col-12">
+            <label for="">Title</label>
+        </div>
+        <div class="col col-12">
+            <input class="" type="text" name="title" value="<% book.title %>">
+        </div>
+    </div>
+    <div class="col col-12 col-md-6">
+        <div class="col col-12">
+            <label>Author</label>
+        </div>
+        <div class="col col-12">
+            <select name="author">
+                <% authors.forEach(author => { %>
+                    <% if (author.id === book.author) { %>
+                      <option selected label="<%= author.name %>" value="<%= author.id %>">
+                    <% } else { %>
+                      <option label="<%= author.name %>" value="<%= author.id %>">
+                    <% } %>
+                  <% }) %>
+            </select>           
+        </div>
+    </div>
+</div>
+<div class="row mt-1">
+    <div class="col col-12">
+        <label>Genre</label>
+    </div>
+    <div class="col col-12">
+        <input class="" type="text" name="genre" value="<%= book.genre %>">
+    </div>
+</div>
+<div class="row mt-1">
+    <div class="col col-12 col-md-6">
+        <div class="col col-12">
+            <label>Publish date</label>
+        </div>
+        <div class="col col-12">
+            <input class="" type="date" name="publishDate" 
+            value="<%= book.publishDate?.toISOString().split('T')[0] || '' %>"
+        </div>
+    </div>
+    <div class="col col-12 col-md-6">
+        <div class="col col-12">
+            <label>Page count</label>
+        </div>
+        <div class="col col-12">
+            <input class="" type="number" min="1" name="pageCount" value="<%= book.pageCount %>">    
+        </div>
+    </div>
+</div>
+<div class="row mt-1">
+    <div class="col col-12 col-md-6">
+        <div class="col col-12">
+            <label>Cover</label>
+        </div>
+        <div class="col col-12">
+            <input class="" type="file" name="cover">       
+        </div>
+    </div>
+    <div class="col col-12 col-md-6">
+        <div class="col col-12">
+            <label>Description</label>
+        </div>
+        <div class="col col-12">
+            <textarea class="" name="description" value=""><%= book.description %></textarea>    
+        </div>
+    </div>
+</div>
+
+
