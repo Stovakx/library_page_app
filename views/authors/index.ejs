@@ -22,9 +22,9 @@
                 <p><%= author.name %></p>
             </div>
             <div class="col-12 col-sm-6 d-flex justify-content-start justify-content-md-end mt-2 px-0">
-                <a href=""class="btn " type="GET" id="viewAuthor">View</a> 
-                <a href="" class="btn btn-warning mx-3"type="GET" id="editAuthor">Edit</a> 
-                <button class="btn btn-danger" type="submit" id="deleteAuthor">Delete</button>
+                <a href="/authors/<%= author.id %>"class="btn "  id="viewAuthor">View</a> 
+                <a href="/authors/<%= author.id %>/edit" class="btn btn-warning mx-3" id="editAuthor">Edit</a> 
+                <%- include('../partials/deleteForm', {url : `authors/${author.id}`}) %>
             </div>
         <% }) %>
     </div>

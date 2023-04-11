@@ -1,0 +1,21 @@
+<h2>Edit <%= author.name %> author</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <form action="/authors/<%= author.name %>?_method=PUT" method="POST">
+                <div class="row">
+                    <div class="col-12">
+                        <%- include('_edit_authors.ejs') %>
+                        <a href="/authors" class="btn btn-danger ms-2">Cancel</a>
+                        <button type="submit" class="btn btn-success ms-2">Create</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 pt-2 ">
+                        
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

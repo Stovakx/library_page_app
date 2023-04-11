@@ -6,7 +6,7 @@ _filters.ejs:
             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Centered dropdown
             </button>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu">filters
                 <ul class="dropdown-menu">
                     <% genres.forEach(genre => { %>
                         <li class="dropdown-item form-check">

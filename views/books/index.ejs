@@ -1,4 +1,4 @@
-<section class="mt-4">
+<section class="mt-4 searchBooks">
     <div class="container">
         <div class="row">
             <div class="col">
@@ -16,35 +16,9 @@
                 </form>
             </div>
         </div>
-        <div class="row">
-            <%- include('_filters.ejs') %>    
-        </div>
     </div>
 </section>
-<section class="published">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h3 class="text-center">Recently added</h3>
-            </div>
-            <div class="row d-flex justify-content-start">
-                <% books.forEach(book => { %>
-                    <a href="" class="recentlyAddedCardsAnchor">
-                        <div class="card" style="width: 7rem;">
-                            <img src="<%= book.coverImagePath %>" class="card-img-top pt-1" alt="...">
-                            <div class="card-body pt-1">
-                                <p class="card-title"><strong><%= book.title %></strong></p>
-                                <p class="card-text"><%= book.genre %></p>
-                            </div>
-                        </div>
-                    </a>
-                <% }) %>
-            </div>
-            
-        </div>
-    </div>
-</section>
-<section>
+<section class="sectionBookCards">
     <div class="container mt-5">
         <div class="row d-flex justify-content-center">
             <% books.forEach(book => { %>
@@ -52,6 +26,7 @@
                     <img src="<%= book.coverImagePath %>" class="card-img-top pt-1" alt="...">
                     <div class="card-body">
                     <h5 class="card-title"><%= book.title %></h5>
+                    <!-- need to show author.name no id. -->
                     <p class="card-text"><%= book.author %></p>
                     <p class="card-text"><%= book.description %></p>
                     <div class="col-12 d-flex justify-content-center mt-2 px-0">
