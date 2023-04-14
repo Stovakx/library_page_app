@@ -3,6 +3,7 @@ const router = express.Router()
 const Author = require('../models/author')
 const Book = require('../models/book')
 
+
 //all authors
 router.get('/', async (req, res)=> {
   let searchOptions = {}
@@ -77,13 +78,13 @@ router.put('/:id', async (req, res) => {
     author.genre = req.body.genre
     author.dateOfBirth = new Date(req.body.dateOfBirth)
     author.aboutAuthor = req.body.aboutAuthor
-    await author.save()
+    await  author.save()
     res.redirect(`/authors/${author.id}`)
   } catch (err) {
-    if(author == null){
-      console.log(err)
+    if (author == null) {
       res.redirect('/')
-    }else{
+      console.log(err)
+    } else {
       res.render('authors/edit', {
         author: author,
         errorMessage: 'Error updating Author'
@@ -92,15 +93,16 @@ router.put('/:id', async (req, res) => {
   }
 })
 
-//delete author
+//delete 
 router.delete('/:id', async (req, res) => {
   let author
   try {
-    author = await Author.findById(req.params.id).exec()
+    author = await Author.findById(req.params.id)
     await author.remove()
     res.redirect('/authors')
-  } catch {
+  } catch (err) {
     if (author == null) {
+      console.log(err)
       res.redirect('/')
     } else {
       res.redirect(`/authors/${author.id}`)
@@ -108,3 +110,4 @@ router.delete('/:id', async (req, res) => {
   }
 })
 module.exports = router
+
