@@ -125,13 +125,15 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   let book
   try {
-    book = await Book.findById(req.params.id).exec()
-    await book.remove()
+    book = await Book.findById(req.params.id)
+    await book.deleteOne()
     res.redirect('/books')
-  } catch {
+  } catch (err) {
     if (book == null) {
+      console.log(err)
       res.redirect('/')
     } else {
+      console.log(err)
       res.redirect(`/books/${book.id}`)
     }
   }
