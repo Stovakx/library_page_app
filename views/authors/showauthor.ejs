@@ -26,7 +26,7 @@
         </div>
         <div class="row d-flex justify-content-start mt-4">
             <% booksByAuthor.forEach(book => { %>
-                <a href="/books/<%= book.id %>" class="recentlyAddedCardsAnchor">
+                <a href="/books/<%= book.id %>" class="text-reset text-decoration-none">
                     <div class="card" style="width: 15rem;">
                         <img src="<%= book.coverImagePath %>" class="card-img-top pt-0">
                         <div class="card-body pt-1">

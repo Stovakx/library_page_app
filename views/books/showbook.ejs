@@ -1,0 +1,52 @@
+<section class="sectionShowBook">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h3><%= book.title %></h3>
+            </div>
+            <div class="row">
+                <div class="col-lg-2">
+                    <img width="150px" src="<%= book.coverImagePath %>" alt="">
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col">
+                            <p>Author: <%= book.author.name %></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>Genre: <%= book.genre %></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>Publish date: <%= book.publishDate.toDateString() %></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>Page count: <%= book.pageCount %></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>Description: <%= book.description %></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1 d-inline-flex p-0">
+                <a class="btn btn-warning mr-3" href="/books/<%= book.id %>/edit">Edit</a>
+                <%- include('../partials/deleteForm.ejs', {url: `/books/${book.id}`}) %>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col p-0 mt-1">
+                <a class="btn btn-lg btn-info" href="/authors/<%= book.author.id %>">View Author</a>
+            </div>
+        </div>
+    </div>
+</section>

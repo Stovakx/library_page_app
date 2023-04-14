@@ -22,17 +22,17 @@
     <div class="container mt-5">
         <div class="row d-flex justify-content-center">
             <% books.forEach(book => { %>
-                <div class="card" style="width: 18rem;">
-                    <img src="<%= book.coverImagePath %>" class="card-img-top pt-1" alt="...">
+                <div class="card m-2" style="width: 18rem;">
+                    <img src="<%= book.coverImagePath %>" class="card-img-top p-0" alt="...">
                     <div class="card-body">
                     <h5 class="card-title"><%= book.title %></h5>
                     <!-- need to show author.name no id. -->
-                    <p class="card-text"><%= book.author %></p>
+                    <p class="card-text"><%= book.author.name %></p>
                     <p class="card-text"><%= book.description %></p>
                     <div class="col-12 d-flex justify-content-center mt-2 px-0">
-                        <a href=""class="btn " type="GET" id="viewAuthor">Feedbacks</a> 
-                        <a href="" class="btn btn-warning mx-3"type="GET" id="editAuthor">Edit</a> 
-                        <button class="btn btn-danger" type="submit" id="deleteAuthor">Delete</button>
+                        <a href="/books/<%= book.id %>"class="btn " id="viewAuthor">Info</a> 
+                        <a href="/books/<%= book.id %>/edit" class="btn btn-warning mx-3" id="editAuthor">Edit</a> 
+                        <%- include('../partials/deleteForm', { url: `/books/${book.id}`}) %>
                     </div>
                     </div>
                 </div>    

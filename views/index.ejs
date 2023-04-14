@@ -19,7 +19,7 @@
                 </div>
                 <div class="row d-flex justify-content-start">
                     <% books.forEach(book => { %>
-                        <a href="" class="recentlyAddedCardsAnchor">
+                        <a href="/books/<%= book.id %>" class="text-reset text-decoration-none">
                             <div class="card" style="width: 7rem;">
                                 <img src="<%= book.coverImagePath %>" class="card-img-top pt-0" alt="...">
                                 <div class="card-body pt-1">
@@ -38,7 +38,7 @@
             <div class="row">
                 <% authors.forEach(author => { %>
                     <div class="col-2 d-flex mt-2">
-                        <p><%= author.name %></p>
+                        <a href="/authors/<%= author.id %>" class="text-reset text-decoration-none"><p><%= author.name %></p></a>
                     </div>
                 <% }) %>
             </div>
