@@ -122,7 +122,7 @@ router.put('/:id', async (req, res) => {
 })
 
 //delete book
-/* router.delete('/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   let book
   try {
     book = await Book.findById(req.params.id).exec()
@@ -136,25 +136,7 @@ router.put('/:id', async (req, res) => {
     }
   }
 })
- */
-router.delete('/:id', async (req, res) => {
-  let author
-  try {
-    author = await Author.findById(req.params.id)
-    await author.deleteOne()
-    res.redirect('/authors')
-  } catch (err) {
-    if (err.isKnownError) {
-      res.status(400).send(err.message)
-    } else if (author == null) {
-      console.log(err)
-      res.redirect('/')
-    } else {
-      console.log(err)
-      res.redirect(`/authors/${author.id}`)
-    }
-  }
-})
+
 
 function removeBookCover(fileName) {
   fs.unlink(path.join(uploadPath, fileName), err => {
