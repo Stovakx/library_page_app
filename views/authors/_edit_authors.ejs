@@ -14,7 +14,7 @@
             <label>Genre</label>
         </div>
         <div class="col-10">
-            <input type="text" class="form-control" name="genre" value="">
+            <input type="text" class="form-control" name="genre" value="<%= author.genre %>">
         </div>
     </div>
 </div>
@@ -24,7 +24,7 @@
             <label for="">Birth</label>
         </div>
         <div class="col-10">
-            <input type="date" class="form-control" name="dateOfBirth">
+            <input type="date" class="form-control" name="dateOfBirth" value="<%= author.dateOfBirth.toISOString().slice(0,10) %>">
         </div>
     </div>
 </div>

@@ -37,11 +37,12 @@ const bookSchema = new mongoose.Schema({
         required: true,
         ref: 'Author'
     },
-    comments: [{
-        user: { type: String, required: true },
-        text: { type: String, required: true },
+    //code for comments
+/*     comments: [{
+        user: { type: String, required: false },
+        text: { type: String, required: false },
         date: { type: Date, default: Date.now },
-      }],
+      }], */
 })
 
 bookSchema.virtual('coverImagePath').get(function(){

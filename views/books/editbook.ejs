@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-12 mt-4 ">
                 <h2 class="text-center">Edit <%= book.title %></h2>
-                <form action="/books/<%= book.title %> ?_method=PUT" method="POST">
+                <form  method="POST" action="/books/<%= book.id %> ?_method=PUT">
                     <div class="row">
                         <div class="col">
                             <%- include('_edit_book.ejs') %>

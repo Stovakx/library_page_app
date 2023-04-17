@@ -75,7 +75,7 @@ router.get('/:id/edit', async (req, res) => {
 router.put('/:id', async (req, res) => {
   let author
   try {
-    author = await Author.findById(req.params.id)
+    author = await Author.findById(req.params.id.trim())
     author.name = req.body.name
     author.genre = req.body.genre
     author.dateOfBirth = new Date(req.body.dateOfBirth)
@@ -84,7 +84,6 @@ router.put('/:id', async (req, res) => {
     res.redirect(`/authors/${author.id}`)
   } catch (err) {
     if(author == null){
-      console.log(err)
       res.redirect('/')
     }else{
       res.render('authors/edit', {
@@ -99,10 +98,10 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   let author
   try {
-    author = await Author.findById(req.params.id).exec()
-    await author.remove()
+    author = await Author.findById(req.params.id)
+    await author.deleteOne()
     res.redirect('/authors')
-  } catch {
+  } catch (err) {
     if (author == null) {
       res.redirect('/')
     } else {

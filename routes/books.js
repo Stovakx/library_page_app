@@ -86,9 +86,7 @@ router.get('/:id', async (req, res) => {
 router.get('/:id/edit', async (req, res) => {
   try {
     const book = await Book.findById(req.params.id)
-    res.render('books/editbook',
-     { book: book,
-    author: author })
+    renderEditPage(res, book)
   } catch {
     res.redirect('/')
   }
@@ -101,22 +99,20 @@ router.put('/:id', async (req, res) => {
   try {
     book = await Book.findById(req.params.id)
     book.title = req.body.title
-    book.author= req.body.authorId
-    book.genre= req.body.genre
-    book.publishDate= new Date(req.body.publishDate)
-    book.pageCount= req.body.pageCount
-    book.coverImageName= fileName
-    book.description= req.body.description
-    if (req.body.cover != null && req.body.cover !== ''){
+    book.author = req.body.author
+    book.publishDate = new Date(req.body.publishDate)
+    book.pageCount = req.body.pageCount
+    book.description = req.body.description
+    if (req.body.cover != null && req.body.cover !== '') {
       saveCover(book, req.body.cover)
     }
-    await bokk.save()
-    res.redirect(`books/${newBook.id}`)
+    await book.save()
+    res.redirect(`/books/${book.id}`)
   } catch {
     if (book != null) {
       renderEditPage(res, book, true)
-    }else{
-      res.redirect('/')
+    } else {
+      res.redirect(`/books`)
     }
   }
 })
@@ -125,18 +121,19 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   let book
   try {
-    book = await Book.findById(req.params.id).exec()
-    await book.remove()
+    book = await Book.findById(req.params.id)
+    await book.deleteOne()
     res.redirect('/books')
-  } catch {
+  } catch (err) {
     if (book == null) {
+      console.log(err)
       res.redirect('/')
     } else {
+      console.log(err)
       res.redirect(`/books/${book.id}`)
     }
   }
 })
-
 
 function removeBookCover(fileName) {
   fs.unlink(path.join(uploadPath, fileName), err => {
@@ -160,13 +157,15 @@ async function renderNewPage(res, book, hasError = false) {
 
 async function renderEditPage(res, book, hasError = false) {
   try {
-    const authors = await Author.find({})
+    const author = await Author.find({})
     const params = {
-      authors: authors,
+      author: author,
       book: book
     }
+    console.log(author)
     if (hasError) params.errorMessage = 'Error update Book'
-    res.render('books/edit', params)
+    res.render('books/editbook', params)
+    console.log('Error message:', params.errorMessage)
   } catch {
     res.redirect('/books')
   }

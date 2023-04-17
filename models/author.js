@@ -25,7 +25,7 @@ authorSchema.pre('delete', function(next) {
   Book.find({ author: this._id }, (err, books) => {
     if (err) {
       next(err)
-    } else if (Book.length > 0) {
+    } else if (books.length > 0) {
       const error = new Error('This author has books still')
       error.isKnownError = true
       next(error)
