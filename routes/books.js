@@ -56,7 +56,7 @@ router.post('/', upload.single('cover'), async (req, res) => {
     publishDate: new Date(req.body.publishDate),
     pageCount: req.body.pageCount,
     coverImageName: fileName,
-    description: req.body.description
+    description: req.body.description,
   })
 
   try {
@@ -122,7 +122,7 @@ router.put('/:id', async (req, res) => {
 })
 
 //delete book
-router.delete('/:id', async (req, res) => {
+/* router.delete('/:id', async (req, res) => {
   let book
   try {
     book = await Book.findById(req.params.id).exec()
@@ -133,6 +133,25 @@ router.delete('/:id', async (req, res) => {
       res.redirect('/')
     } else {
       res.redirect(`/books/${book.id}`)
+    }
+  }
+})
+ */
+router.delete('/:id', async (req, res) => {
+  let author
+  try {
+    author = await Author.findById(req.params.id)
+    await author.deleteOne()
+    res.redirect('/authors')
+  } catch (err) {
+    if (err.isKnownError) {
+      res.status(400).send(err.message)
+    } else if (author == null) {
+      console.log(err)
+      res.redirect('/')
+    } else {
+      console.log(err)
+      res.redirect(`/authors/${author.id}`)
     }
   }
 })

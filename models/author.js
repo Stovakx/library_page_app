@@ -21,12 +21,14 @@ const authorSchema = new mongoose.Schema({
     }
 })
 //if author has some books linked to him, u can't delete 
-authorSchema.pre('remove', function(next) {
+authorSchema.pre('delete', function(next) {
   Book.find({ author: this._id }, (err, books) => {
     if (err) {
       next(err)
-    } else if (books.length > 0) {
-      next(new Error('This author has books still'))
+    } else if (Book.length > 0) {
+      const error = new Error('This author has books still')
+      error.isKnownError = true
+      next(error)
     } else {
       next()
     }

@@ -5,6 +5,21 @@
                 <h2><%= author.name%></h2>
             </div>
         </div>
+        <div class="row">
+            <div class="col">
+                <p>Genre: <%= author.genre %></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p>Date of birth: <%= author.dateOfBirth.toDateString() %></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p>About author: <%= author.aboutAuthor %></p>
+            </div>
+        </div>
     </div>
 </section>
 
