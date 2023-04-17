@@ -5,7 +5,6 @@ const Book = require('../models/book')
 const Author = require('../models/author')
 const multer = require('multer')
 const path = require('path')
-const author = require('../models/author')
 const uploadPath = path.join('public', Book.coverImageBasePath)
 const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
 const upload = multer({
@@ -81,6 +80,31 @@ router.get('/:id', async (req, res) => {
     res.redirect('/')
   }
 })
+
+//adding comments
+router.post('/:id', async function(req, res, next) {
+  try {
+    const rating = req.body.rating
+    const user = req.body.user
+    const bookId = req.params.id
+    const commentText = req.body.comment
+
+    const comment = new Comment({
+      text: commentText,
+      user: user,
+      book: bookId,
+      rating: rating
+    })
+
+    await comment.save();
+
+    await Book.findByIdAndUpdate(bookId, { $push: { comments: comment._id } });
+
+    res.redirect('/books/:id');
+  } catch (err) {
+    return next(err);
+  }
+});
 
 //edit book
 router.get('/:id/edit', async (req, res) => {

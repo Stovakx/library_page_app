@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
+const Comment = require('./comment')
 const path = require('path')
 const coverImageBasePath = 'uploads/bookCovers'
+
 
 const bookSchema = new mongoose.Schema({
     title:{
@@ -32,17 +34,17 @@ const bookSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    //author
     author: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'Author'
     },
     //code for comments
-/*     comments: [{
-        user: { type: String, required: false },
-        text: { type: String, required: false },
-        date: { type: Date, default: Date.now },
-      }], */
+    comments:{
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: Comment
+    }
 })
 
 bookSchema.virtual('coverImagePath').get(function(){

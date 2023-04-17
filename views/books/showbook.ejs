@@ -67,12 +67,38 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <%- include('_comments.ejs') %>
+    <div class="container-fluid">
+        <% book.comments.forEach(function(comment) { %>
+            <div class="row">
+                <div class="col">
+                    <h5><%= comment.user %></h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <span><%= comment.rating %>/5</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p><%= comment.text %></p>
+                </div>
+            </div>
+        <% }) %>
         <div class="row">
             <div class="col">
-                commenting books is in progress
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <form action="/books/<%= book.id %>" method="post" class="commentBookForm">
+                    <%- include('../partials/comments.ejs', {comment: {}}) %>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
 </section>
