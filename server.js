@@ -16,6 +16,7 @@ db.once('open', () => console.log('Connected to database'))
 const indexRouter = require('./routes/index')
 const authorsRouter = require('./routes/authors')
 const bookRouter = require('./routes/books')
+const userRouter = require('./routes/user')
 
 
 
@@ -31,6 +32,7 @@ app.use(methodOverride('_method'))
 app.use('/', indexRouter)
 app.use('/authors', authorsRouter)
 app.use('/books', bookRouter)
+app.use('/user', userRouter)
 
 
 
