@@ -5,7 +5,7 @@ const commentSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    /* for user model
+    /* after registration completed and login completed
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'

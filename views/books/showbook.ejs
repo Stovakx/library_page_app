@@ -34,6 +34,10 @@
                             <p>Description: <%= book.description %></p>
                         </div>
                     </div>
+                    <div class="row">
+                        <!-- Math.round(comment.rating) 1 decimal, use js for showbook -->
+                        <div class="col"><p>Rating: <span class="ratingBook"></span>/5</p></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -57,48 +61,44 @@
                 <h3 class="text-center">feedbacks</h3>
             </div>
         </div>
-        <div class="row">
-            <div class="col-9 d-flex justify-content-end">
-                <p>Rating</p>
-            </div>
-            <div class="col-3">
-                <!-- stars rating -->
-                <span></span>
-            </div>
-        </div>
     </div>
-    <div class="container-fluid">
+    <div class="container-fluid mt-5">
         <% book.comments.forEach(function(comment) { %>
-            <div class="row">
-                <div class="col">
-                    <h5><%= comment.user %></h5>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <span><%= comment.rating %>/5</span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <p><%= comment.text %></p>
+            <div class="row"> 
+                <div class="col-12  mt-2 d-flex justify-content-center" >
+                    <div class="col-5 border border-5 border-dark rounded rounded-5">
+                        <div class="row">
+                            <div class="col d-flex justify-content-center pt-2">
+                                <h5><%= comment.user %></h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col d-flex justify-content-center">
+                                <span><%= comment.rating %>/5</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col d-flex justify-content-center">
+                                <p><%= comment.text %></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         <% }) %>
-        <div class="row">
-            <div class="col">
-            </div>
-        </div>
     </div>
-    <div class="container">
+    <div class="container-fluid mt-5 ">
         <div class="row">
-            <div class="col-12">
-                <form action="/books/<%= book.id %>" method="post" class="commentBookForm">
+            <div class="col-12 ">
+                <form action="/books/<%= book.id %>" method="post" class="commentBookForm ">
                     <%- include('../partials/comments.ejs', {comment: {}}) %>
-
+                    <div class="row  pt-2">
+                        <div class="col-12 d-flex justify-content-center">
+                            <button type="submit" class="btn btn-success mr-3" >Add comment</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
-
 </section>

@@ -3,6 +3,7 @@ const router = express.Router()
 const fs = require('fs')
 const Book = require('../models/book')
 const Author = require('../models/author')
+const Comment = require('../models/comment')
 const multer = require('multer')
 const path = require('path')
 const uploadPath = path.join('public', Book.coverImageBasePath)
@@ -72,9 +73,12 @@ router.post('/', upload.single('cover'), async (req, res) => {
 //view page book
 router.get('/:id', async (req, res) => {
   try {
+    //need to limit comments to 10? adding next "slide"?
     const book = await Book.findById(req.params.id)
                            .populate('author')
+                           .populate('comments')
                            .exec()
+                           
     res.render('books/showbook', { book: book })
   } catch {
     res.redirect('/')
@@ -87,7 +91,7 @@ router.post('/:id', async function(req, res, next) {
     const rating = req.body.rating
     const user = req.body.user
     const bookId = req.params.id
-    const commentText = req.body.comment
+    const commentText = req.body.text
 
     const comment = new Comment({
       text: commentText,
@@ -100,7 +104,7 @@ router.post('/:id', async function(req, res, next) {
 
     await Book.findByIdAndUpdate(bookId, { $push: { comments: comment._id } });
 
-    res.redirect('/books/:id');
+    res.redirect(`/books/${bookId}`);
   } catch (err) {
     return next(err);
   }

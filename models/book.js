@@ -43,7 +43,7 @@ const bookSchema = new mongoose.Schema({
     //code for comments
     comments:{
         type: [mongoose.Schema.Types.ObjectId],
-        ref: Comment
+        ref: 'Comment'
     }
 })
 
