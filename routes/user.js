@@ -2,6 +2,10 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 
+router.get('/register', (req, res) =>{
+  res.render('user/register')
+})
+
 router.post('/register', async (req, res) => {
   const { email, password } = req.body;
 
@@ -13,6 +17,10 @@ router.post('/register', async (req, res) => {
     res.status(400).send(err.message);
   }
 });
+
+router.get('/login', (req, res) => {
+  res.render('user/login')
+})
 
 router.post('/login', async (req, res) => {
     const { user, password } = req.body;

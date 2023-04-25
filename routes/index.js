@@ -9,6 +9,9 @@ router.get('/', async (req, res) => {
     try {
       books = await Book.find().sort({ createdAt: 'desc' }).populate('author').limit(10).exec()
       authors = await Author.find().sort({ createdAt: 'desc'}).limit(10).exec()
+      if (!user){
+
+      }
     } catch {
         authors = []
         books = []

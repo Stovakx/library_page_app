@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema ({
         required: true,
         unique: true,
     },
-    favorieGenre:{
+    favoriteGenre:{
         type: String,
         required: false,
     },
