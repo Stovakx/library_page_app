@@ -1,1 +1,24 @@
-login
+<section class="mt-5">
+    <div class="container ">
+        <div class="row">
+            <div class="col text-center">
+                <h1>You can log in here</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid mt-3">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                <form action="/user" method="post">
+                    <%- include('./_login_form.ejs') %>
+                    <div class="row">
+                        <div class="col d-flex justify-content-end">
+                            <a href="../" class="btn btn-danger mr-2">Cancel</a>
+                            <button class="btn btn-success" type="submit">Log in</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

@@ -11,6 +11,12 @@
             <div class="col-12 d-flex justify-content-center">
                 <form action="/user" method="post">
                     <%- include('./_registration_form.ejs') %>
+                    <div class="row">
+                        <div class="col d-flex justify-content-end">
+                            <a href="../" class="btn btn-danger mr-2">Cancel</a>
+                            <button class="btn btn-success" type="submit">Register</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
